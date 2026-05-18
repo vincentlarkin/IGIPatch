@@ -5,8 +5,18 @@ A fan-made patch for Project IGI, currently in an early stage of development. Bu
 1. Find your IGI installation directory and backup the file 'pc\IGI.exe'.
 2. Extract the contents of the ZIP archive (IGIPatch_vx.xx_XX_NoSetup.zip) to the root directory of your game, accept when prompted to replace IGI.exe.
 
+For CUE/BIN disc-image installs and DirectX 7 device errors on modern Windows, see `docs/local-compatibility-guide.md`.
+
 # Configuration
 Individual features of the patch can be tweaked by editing the file 'IGIPatch.ini' with a text editor (eg.: Notepad). Numeric constant '1' means true/enable, whereas '0' means false/disable.
+
+Useful compatibility options:
+
+```ini
+[Options]
+RemoveCDCheck=1
+UnlockAllMissions=1
+```
 
 # Supported game versions
 - European/Chinese
@@ -24,6 +34,7 @@ Individual features of the patch can be tweaked by editing the file 'IGIPatch.in
 - Fixed Resolution listbox showing a wrong display mode; Resolution limit raised from 8192x8192x32 to 65536x65536.
 - Added widescreen support; Screen shrinking/stretching is disabled and horizontal FOV is automatically adjusted.
 - Added debug features via command-line arguments: NoLightmaps, NoTerrainLightmaps, DebugText, Debug, Small, DebugKeys.
+- Added dedicated `UnlockAllMissions` option for mission selection, independent from debug features.
 - Disabled the hard-coded 640x480x16 mode set for the main menu. A custom main menu resolution can be set in the INI file.
 - IGI is now DPI-Aware. Solves the issue with the size of the client window being incorrect when Windows DPI scaling is set higher than 100%.
 

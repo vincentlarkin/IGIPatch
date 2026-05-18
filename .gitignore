@@ -1,0 +1,16 @@
+# Local game/media artifacts
+*.bin
+*.cue
+*.iso
+pc/
+
+# Downloaded wrapper/release archives
+*.7z
+*.zip
+dgVoodoo2_*/
+
+# Build/editor noise
+*.bak
+*.tmp
+*.user
+*.suo

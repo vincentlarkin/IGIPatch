@@ -529,7 +529,7 @@ proc ApplyPatches_ID2 ; IGI.exe v1.0 (Region: Japan)
 
         .debugpatch:
         cmp     dword[ini_opts_debugpatch],0
-        je      .mainmenures
+        je      .unlockmissions
 
         ; init debug command-line params
         stdcall GetRealAddress,PMI_IGIExe,0x0048FAA4
@@ -568,6 +568,10 @@ proc ApplyPatches_ID2 ; IGI.exe v1.0 (Region: Japan)
         stdcall MPatchAddress,Main_ParseSmallCB.fixup1,eax,0
         and     ebx,eax
 
+        .unlockmissions:
+        cmp     dword[ini_opts_unlockmissions],0
+        je      .mainmenures
+
         ; replace font
         ;stdcall GetRealAddress,PMI_IGIExe,0x004E81E5
         ;stdcall MPatchAddress,eax,debugfont,0
@@ -579,7 +583,7 @@ proc ApplyPatches_ID2 ; IGI.exe v1.0 (Region: Japan)
         ;stdcall MPatchAddress,eax,debugfont,0
         ;and     ebx,eax
 
-        ; disable requirement of completing all 14 missions
+        ; mission screen - disable requirement of completing all 14 missions
         stdcall GetRealAddress,PMI_IGIExe,0x00488FC2
         stdcall MPatchByte,eax,0
         and     ebx,eax

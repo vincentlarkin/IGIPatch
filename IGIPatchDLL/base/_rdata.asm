@@ -38,6 +38,8 @@ key_widescreen          du 'WidescreenPatch',0
 def_widescreen          dd 1
 key_debugpatch          du 'EnableDebugFeatures',0
 def_debugpatch          dd 1
+key_unlockmissions      du 'UnlockAllMissions',0
+def_unlockmissions      dd 1
 key_mainmenures         du 'CustomMainMenuResolution',0
 def_mainmenures         dd 1
 key_dpiawareness        du 'SetDPIAwareness',0

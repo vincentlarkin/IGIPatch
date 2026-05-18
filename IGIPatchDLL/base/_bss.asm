@@ -20,6 +20,7 @@ ini_opts_borderless     rd 1
 ini_opts_resolutions    rd 1
 ini_opts_widescreen     rd 1
 ini_opts_debugpatch     rd 1
+ini_opts_unlockmissions rd 1
 ini_opts_mainmenures    rd 1
 ini_opts_dpiawareness   rd 1
 
