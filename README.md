@@ -19,6 +19,7 @@ Common fixes:
 - Use `RemoveCDCheck=1` if the original CD check fails on a mounted image.
 - Use dgVoodoo2's 32-bit DirectX wrapper if the game exits with `DDERR_UNSUPPORTED` or `Couldn't create device`.
 - Use `tools/Install-DgVoodoo2.ps1` to fetch dgVoodoo2 locally without committing wrapper DLLs to this repo.
+- Use `tools/Test-ProjectIGISetup.ps1` to check for the common local causes behind missing videos, DirectX device errors, and mission-load crashes.
 
 ## Configuration
 Individual features of the patch can be tweaked by editing the file 'IGIPatch.ini' with a text editor (eg.: Notepad). Numeric constant '1' means true/enable, whereas '0' means false/disable.
@@ -59,13 +60,22 @@ UnlockAllMissions=1
 - Do not commit proprietary game binaries, disc images, copied game assets, generated decompilation dumps, or downloaded wrapper DLLs.
 - Keep source changes focused on patch code, docs, reproducible helpers, and clean configuration files.
 
-## Known issues
-1. Intro videos not playing:
-- Install/register Indeo Video 5 (IV50) codec.
-2. When playing with a resolution of 2K or above, the game falls back to 640x480:
-- The game uses DirectX7, which is hardcoded to 2048x2048 pixels. Use UCyborg's Legacy Direct3D Resolution Hack or a wrapper without that limitation (eg.: dgVoodoo2).
-3. Game crashes when loading a mission:
-- Some in-game overlays (such as Rivatuner) are known to cause crashes. Disable them before launching the game.
+## Troubleshooting
+
+Run the setup checker against the folder that contains `IGI.exe`:
+
+```powershell
+tools\Test-ProjectIGISetup.ps1 -GamePcDir "C:\Games\Project IGI\pc"
+```
+
+Common findings:
+
+1. Intro videos do not play:
+- The game needs the legacy Indeo Video 5 codec (`IV50`). The setup checker reports whether the codec appears to be registered. Install/register a trusted IV50 codec only if you need the original intro videos.
+2. The game falls back to 640x480 at 2K or higher:
+- DirectX 7 is limited around 2048x2048. Use dgVoodoo2 or another wrapper without that limitation. `tools\Install-DgVoodoo2.ps1` installs the required local wrapper files.
+3. The game crashes when loading a mission:
+- Disable overlay/hook software first, especially Rivatuner/RTSS, MSI Afterburner, Discord overlay, Steam overlay, Game Bar, and GPU capture overlays. The setup checker reports common running overlay processes.
 
 ## Credits
 Special thanks to @neoxaero [(Sagatt)](https://github.com/Sagatt) for the immense help provided.

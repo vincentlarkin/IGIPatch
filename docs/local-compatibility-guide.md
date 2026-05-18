@@ -28,6 +28,23 @@ Use:
 tools\Install-DgVoodoo2.ps1 -GamePcDir "C:\Games\Project IGI\pc"
 ```
 
+## Setup Checker
+
+Run:
+
+```powershell
+tools\Test-ProjectIGISetup.ps1 -GamePcDir "C:\Games\Project IGI\pc"
+```
+
+It checks for:
+
+- `IGI.exe`
+- `IGIPatch.ini`
+- dgVoodoo2 DirectX wrapper DLLs
+- Indeo Video 5 (`IV50`) codec registration/files
+- display sizes that can hit DirectX 7's 2048 limit
+- common overlay/hook processes associated with mission-load crashes
+
 ## Launch Helper
 
 Use the launcher helper when you want the CUE mounted automatically before starting the game:
